@@ -35507,21 +35507,21 @@
                                     <div class="control-container">
                                         <div class="layuimini-notice-content">
                                             <div
-                                                onclick="openAdInNewTab(&#39;https://nai3botinstruction.pages.dev&#39;);">
-                                                <button class="ad-close-btn" onclick="closeAd(event)"></button><img
-                                                    src="./misaka-TagSelect_files/last_orderInTheWall.png"
+                                                onclick="openInNewTab(&#39;https://nai3botinstruction.pages.dev&#39;);">
+                                                <img src="./misaka-TagSelect_files/last_orderInTheWall.png"
                                                     style="width:50%; height:auto; display: block; margin: 0 auto;"
-                                                    alt="Ad Image" class="ad-image">
+                                                    alt="Logo-girl" class="Logo-girl">
                                             </div>
-                                            <div class="ad-text">
+                                            <div class="underLogo">
                                                 <h2>NAI3指南</h2>
                                                 <p>宝宝巴士也能学会的nai3指南</p>
                                                 <p>如果手机浏览器出现卡死，请换用edge浏览器</p>
                                                 </ul>
-                                                <button class="ad-action-btn"
-                                                    onclick="openAdInNewTab(&#39;https://nai3botinstruction.pages.dev&#39;);">了解更多</button>
+                                                <button class="learnMore"
+                                                    onclick="openInNewTab(&#39;https://nai3botinstruction.pages.dev&#39;);">了解更多</button>
                                             </div>
-                                            <br><h1>关于本网站</h1>
+                                            <br>
+                                            <h1>关于本网站</h1>
                                             本网站是一个提供词条查找功能的服务站点；<br><br>更多细节请查阅<a target="_blank"
                                                 href="https://nai3botinstruction.pages.dev/">宝宝巴士也能学会的nai3指南</a>；<br><br>
                                             <hr class="ws-space-16">
@@ -35571,7 +35571,7 @@
             var adContainer = document.querySelector('.ad-container');
             adContainer.style.display = 'none'; // 隐藏广告容器
         }
-        function openAdInNewTab(url) {
+        function openInNewTab(url) {
             window.open(url, '_blank'); // 在新标签页中打开链接
         }
         function loadtag() {

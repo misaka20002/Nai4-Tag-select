@@ -35,45 +35,45 @@
     z-index: 10000;
 }
 
-.ad-image {
+.Logo-girl {
     width: 100%;
     height: auto;
     border-radius: 8px;
 }
 
-.ad-text {
+.underLogo {
     margin-top: 10px;
 }
 
-.ad-text h2 {
+.underLogo h2 {
     font-size: 18px;
     color: #e74c3c;
     margin-bottom: 10px;
 }
 
-.ad-text p {
+.underLogo p {
     margin: 5px 0;
     font-size: 14px;
     color: #333;
     line-height: 1.5;
 }
 
-.ad-text strong {
+.underLogo strong {
     color: #e67e22;
 }
 
-.ad-text ul {
+.underLogo ul {
     margin: 10px 0;
     padding-left: 20px;
 }
 
-.ad-text ul li {
+.underLogo ul li {
     font-size: 14px;
     color: #2c3e50;
     margin-bottom: 5px;
 }
 
-.ad-action-btn {
+.learnMore {
     display: block;
     width: 100%;
     padding: 10px;
@@ -88,6 +88,6 @@
     transition: background-color 0.3s;
 }
 
-.ad-action-btn:hover {
+.learnMore:hover {
     background-color: #2980b9;
 }
