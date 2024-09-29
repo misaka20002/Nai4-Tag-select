@@ -1611,7 +1611,11 @@ const Tagjson = {
         }
     },
     Scene: {
-        "一天": {
+        "质量词条（最后点选）": {
+            "最高画质": "best quality, amazing quality, very aesthetic, absurdres",
+            "黄昏逆光": "realistic,reverse light,golden light, best quality, amazing quality, very aesthetic,absurdres"
+        },
+        "朝朝暮暮": {
             "夜间": "night",
             "日出": "sunrise",
             "晚上": "evening",
