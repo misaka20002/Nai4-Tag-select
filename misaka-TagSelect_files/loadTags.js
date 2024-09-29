@@ -4800,44 +4800,47 @@ function loadTags(keyName) {
     const data = Tagjson[keyName]
     var tagsContainer = document.getElementById(keyName);
     if (tagsContainer) {
-        if ("Illustrator" === keyName) for (let englishTag in data) {
-            {
-                let htmlStr = "<p>" + englishTag + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
-                    chineseTag = data[englishTag];
-                Object.entries(chineseTag).forEach(([_0x48784a, _0x58f74e], _0x175528) => {
-                    let _0x579066 = "but" + keyName + englishTag + _0x175528,
-                        _0x2303fb = _0x58f74e.replace("artist:", "");
-                    htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("./Artist_image/" + (_0x48784a + "_" + _0x2303fb + ".webp")) + "\" alt=\"" + _0x58f74e + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + _0x579066 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x58f74e + "</span>\n                                <span class=\"chinese\">" + _0x48784a + "</span>\n                            </div>\n                        </div>\n                    </div>";
-                });
-                htmlStr += "</form><hr>";
-                tagsContainer.innerHTML += htmlStr;
-            }
-        } else for (let tagKey in data) {
-            {
-                let classFormName = "<p>" + tagKey + "</p><form class=\"layui-form\">",
-                    tag = data[tagKey];
-                Object.entries(tag).forEach(([_0x3de2a2, _0x3db2b9], _0x1b3be2) => {
-                    classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + tagKey + _0x1b3be2) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x3db2b9 + "</span>\n                                <span class=\"chinese\">" + _0x3de2a2 + "</span>\n                            </div>\n                        </div>";
-                });
-                classFormName += "</form><hr>";
-                tagsContainer.innerHTML += classFormName;
+        if ("r18" === keyName) tagsContainer.innerHTML += formatForR17_9(data)
+        else {
+            if ("Illustrator" === keyName) for (let englishTag in data) {
+                {
+                    let htmlStr = "<p>" + englishTag + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
+                        chineseTag = data[englishTag];
+                    Object.entries(chineseTag).forEach(([_0x48784a, _0x58f74e], _0x175528) => {
+                        let _0x579066 = "but" + keyName + englishTag + _0x175528,
+                            _0x2303fb = _0x58f74e.replace("artist:", "");
+                        htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("./Artist_image/" + (_0x48784a + "_" + _0x2303fb + ".webp")) + "\" alt=\"" + _0x58f74e + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + _0x579066 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x58f74e + "</span>\n                                <span class=\"chinese\">" + _0x48784a + "</span>\n                            </div>\n                        </div>\n                    </div>";
+                    });
+                    htmlStr += "</form><hr>";
+                    tagsContainer.innerHTML += htmlStr;
+                }
+            } else for (let tagKey in data) {
+                {
+                    let classFormName = "<p>" + tagKey + "</p><form class=\"layui-form\">",
+                        tag = data[tagKey];
+                    Object.entries(tag).forEach(([_0x3de2a2, _0x3db2b9], _0x1b3be2) => {
+                        classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + tagKey + _0x1b3be2) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x3db2b9 + "</span>\n                                <span class=\"chinese\">" + _0x3de2a2 + "</span>\n                            </div>\n                        </div>";
+                    });
+                    classFormName += "</form><hr>";
+                    tagsContainer.innerHTML += classFormName;
+                }
             }
         }
     } else console.error("Container for category " + keyName + " not found");
 }
-function formatForR17_9(tagsGroup) {
-    let _0x23aca9 = "<form class=\"layui-form r18\">";
-    for (let _0x104763 in tagsGroup) {
+function formatForR17_9(tagsData) {
+    let htmlStr = "<form class=\"layui-form r18\">";
+    for (let key in tagsData) {
         {
-            let _0x2a3ed0 = tagsGroup[_0x104763];
-            _0x23aca9 += "<p>" + _0x104763 + "</p>";
-            Object.entries(_0x2a3ed0).forEach(([_0x197e44, _0x5ba8fd], _0x5df075) => {
-                let _0x2a6faf = "butr18" + _0x5df075 + Math.random().toString(36).substring(2, 18);
-                _0x23aca9 += "\n                <div class=\"tagbutton\" id=\"" + _0x2a6faf + "\">\n                    <div class=\"minus\" style=\"display: none;\">-</div>\n                    <div class=\"plus\" style=\"display: none;\">+</div>\n                    <div class=\"buttext\">\n                        <span class=\"english\">" + _0x197e44 + "</span>\n                        <span class=\"chinese\">" + _0x5ba8fd + "</span>\n                    </div>\n                </div>";
+            let value = tagsData[key];
+            htmlStr += "<p>" + key + "</p>";
+            Object.entries(value).forEach(([key, value], index) => {
+                let str = "butr18" + index + Math.random().toString(36).substring(2, 18);
+                htmlStr += "\n                <div class=\"tagbutton\" id=\"" + str + "\">\n                    <div class=\"minus\" style=\"display: none;\">-</div>\n                    <div class=\"plus\" style=\"display: none;\">+</div>\n                    <div class=\"buttext\">\n                        <span class=\"english\">" + value + "</span>\n                        <span class=\"chinese\">" + key + "</span>\n                    </div>\n                </div>";
             });
         }
     }
-    return _0x23aca9 += "</form>";
+    return htmlStr += "</form>";
 }
 var flagminus = "none",
     flagenglish = "inline-block",
