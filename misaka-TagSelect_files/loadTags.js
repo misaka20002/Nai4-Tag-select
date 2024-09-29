@@ -1,33 +1,33 @@
-function loadTags(tagarea) {
-    fetch("/api_tag/get_tags/" + tagarea).then(_0x2268f0 => _0x2268f0.json()).then(tagsArray => {
-        var tagsContainer = document.getElementById(tagarea);
+function loadTags(keyName) {
+    fetch("/api_tag/get_tags/" + keyName).then(_0x2268f0 => _0x2268f0.json()).then(json => {
+        var tagsContainer = document.getElementById(keyName);
         if (tagsContainer) {
-            if ("r18" === tagarea) tagsContainer.innerHTML += formatForR17_9(tagsArray); else {
-                if ("Illustrator" === tagarea) for (let _0x1846d8 in tagsArray) {
+            if ("r18" === keyName) tagsContainer.innerHTML += formatForR17_9(json); else {
+                if ("Illustrator" === keyName) for (let englishTag in json) {
                     {
-                        let _0x439e33 = "<p>" + _0x1846d8 + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
-                            _0x22a9a5 = tagsArray[_0x1846d8];
-                        Object.entries(_0x22a9a5).forEach(([_0x48784a, _0x58f74e], _0x175528) => {
-                            let _0x579066 = "but" + tagarea + _0x1846d8 + _0x175528,
+                        let htmlStr = "<p>" + englishTag + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
+                            chineseTag = json[englishTag];
+                        Object.entries(chineseTag).forEach(([_0x48784a, _0x58f74e], _0x175528) => {
+                            let _0x579066 = "but" + keyName + englishTag + _0x175528,
                                 _0x2303fb = _0x58f74e.replace("artist:", "");
-                            _0x439e33 += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("/static/images/artist_preview/" + (_0x48784a + "_" + _0x2303fb + ".webp")) + "\" alt=\"" + _0x58f74e + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + _0x579066 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x58f74e + "</span>\n                                <span class=\"chinese\">" + _0x48784a + "</span>\n                            </div>\n                        </div>\n                    </div>";
+                            htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("/static/images/artist_preview/" + (_0x48784a + "_" + _0x2303fb + ".webp")) + "\" alt=\"" + _0x58f74e + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + _0x579066 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x58f74e + "</span>\n                                <span class=\"chinese\">" + _0x48784a + "</span>\n                            </div>\n                        </div>\n                    </div>";
                         });
-                        _0x439e33 += "</form><hr>";
-                        tagsContainer.innerHTML += _0x439e33;
+                        htmlStr += "</form><hr>";
+                        tagsContainer.innerHTML += htmlStr;
                     }
-                } else for (let tagKey in tagsArray) {
+                } else for (let tagKey in json) {
                     {
                         let classFormName = "<p>" + tagKey + "</p><form class=\"layui-form\">",
-                            tag = tagsArray[tagKey];
+                            tag = json[tagKey];
                         Object.entries(tag).forEach(([_0x3de2a2, _0x3db2b9], _0x1b3be2) => {
-                            classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + tagarea + tagKey + _0x1b3be2) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x3db2b9 + "</span>\n                                <span class=\"chinese\">" + _0x3de2a2 + "</span>\n                            </div>\n                        </div>";
+                            classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + tagKey + _0x1b3be2) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x3db2b9 + "</span>\n                                <span class=\"chinese\">" + _0x3de2a2 + "</span>\n                            </div>\n                        </div>";
                         });
                         classFormName += "</form><hr>";
                         tagsContainer.innerHTML += classFormName;
                     }
                 }
             }
-        } else console.error("Container for category " + tagarea + " not found");
+        } else console.error("Container for category " + keyName + " not found");
     }).catch(_0xaf1ce1 => console.error("Error:", _0xaf1ce1));
 }
 function formatForR17_9(tagsGroup) {
