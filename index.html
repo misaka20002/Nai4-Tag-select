@@ -211,7 +211,6 @@
                         <div class="layui-tab layui-card" lay-filter="test-hash">
                             <ul class="layui-tab-title">
                                 <li lay-id="11">自定义</li>
-                                <li lay-id="33">D站Tag导入</li>
                                 <li lay-id="22">Tag搜索</li>
                                 <li class="layui-this" lay-id="33">关于</li>
                             </ul>
@@ -236,33 +235,6 @@
                                                         <div style="margin-top:10px;"><button
                                                                 class="layui-btn layui-btn-sm layui-btn-danger"
                                                                 onclick="clearall()">清空 Tag</button></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="user"></div>
-                                </div>
-                                <div class="tagarea layui-tab-item">
-                                    <div class="layui-card-body">
-                                        <div class="tagarea" id="extractor">
-                                            <div style="display: flex;flex-flow: row nowrap;">
-                                                <div class="layui-form-item layui-form-text"
-                                                    style="flex: 100 100 0%;display: inline-block;vertical-align: middle;">
-                                                    <div class="layui-input-block" style="margin-left:0px;"><textarea
-                                                            id="tag_extractor" class="layui-textarea"
-                                                            placeholder="在此处输入D站某张图像的网址，例如https://danbooru.donmai.us/posts/114514。由于自带翻译功能，因此需要进行较长时间的等待"></textarea>
-                                                    </div>
-                                                </div>
-                                                <div align="center"
-                                                    style="width: auto;margin-top: 1vw;margin-left:10px;display: inline-block;vertical-align: middle;">
-                                                    <div>
-                                                        <div style="margin-top:10px;"><button id="extractortag"
-                                                                class="layui-btn layui-btn-sm layui-btn-normal"
-                                                                onclick="extractortag()">加载 Tag</button></div>
-                                                        <div style="margin-top:10px;"><button
-                                                                class="layui-btn layui-btn-sm layui-btn-danger"
-                                                                onclick="extractorclearall()">清空 Tag</button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -441,91 +413,13 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    return texts; // 在错误情况下返回原始文本
+                    // return texts; // 在错误情况下返回原始文本
+                    return " "; // 在错误情况下返回空
                 });
-        }
-
-        const apiUrl = '/api/extract_tags';
-
-        function extractortag() {
-            var button = document.getElementById("extractortag");
-            button.disabled = true;
-            button.classList.add("layui-btn-disabled"); // 添加layui禁用类
-            button.textContent = "请求中..."; // 更改按钮文本
-            const url = document.getElementById('tag_extractor').value;
-            if (!url) {
-                alert("请输入URL");
-                button.textContent = "加载 Tag";
-                button.classList.remove("layui-btn-disabled");
-                button.disabled = false;
-                return;
-            }
-            var loadingIndex = layer.msg('加载中，请等候大约20秒-1分钟。长时间未响应则代表出现了未知问题', { icon: 16 });
-            fetch(`${apiUrl}?url=${encodeURIComponent(url)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    loadTagsFromData(data);
-                    button.textContent = "加载 Tag";
-                    button.classList.remove("layui-btn-disabled");
-                    button.disabled = false;
-                    layer.close(loadingIndex);
-                })
-                .catch(error => {
-                    alert('There has been a problem with your fetch operation:', error);
-                    layer.close(loadingIndex);
-                    button.textContent = "加载 Tag";
-                    button.classList.remove("layui-btn-disabled");
-                    button.disabled = false;
-                });
-        }
-
-        function loadTagsFromData(data) {
-            const insertionPoint = document.getElementById('extractor');
-            //extractorclearall(); // 清空当前标签
-
-            const usedStrings = new Set();
-
-            data.forEach(tagData => {
-                const tagName = tagData.tag_name;
-                const translatedTagName = tagData.translated_tag_name; // 翻译后的标签名
-
-                if (tagName.trim().length > 0) {
-                    let randomString;
-                    do {
-                        randomString = generateRandomString(6);
-                    } while (usedStrings.has(randomString));
-                    usedStrings.add(randomString);
-
-                    const div = document.createElement('div');
-                    div.className = 'tagbutton';
-                    div.id = 'butuserTag_' + randomString;
-
-                    div.innerHTML = `<div class="minus" style="display: none;">-</div>` +
-                        `<div class="plus" style="display: none;">+</div>` +
-                        `<div class="buttext">` +
-                        `<span class="english">${tagName.trim()}</span>` +
-                        `<span class="chinese">${translatedTagName}</span>` +
-                        `</div>`;
-                    insertionPoint.appendChild(div);
-                }
-            });
         }
 
         function clearall() {
             var userTagDiv = document.getElementById('user-Tag');
-            var existingTags = userTagDiv.querySelectorAll('.tagbutton');
-            existingTags.forEach(function (tag) {
-                tag.remove();
-            });
-        }
-
-        function extractorclearall() {
-            var userTagDiv = document.getElementById('extractor');
             var existingTags = userTagDiv.querySelectorAll('.tagbutton');
             existingTags.forEach(function (tag) {
                 tag.remove();
