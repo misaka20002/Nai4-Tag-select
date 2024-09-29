@@ -173,6 +173,7 @@
                         <div class="layui-tab layui-card" overflow="">
                             <ul class="layui-tab-title">
                                 <li class="layui-this">画面&amp;光影</li>
+                                <li>游戏&amp;角色</li>
                                 <li class="">环境&amp;生物</li>
                                 <li class="">构图&amp;天气</li>
                                 <li class="">画风&amp;材质</li>
@@ -188,7 +189,8 @@
                                 <li>R18</li>
                             </ul>
                             <div class="layui-tab-content" style="height: 500px;overflow-y: scroll;">
-                                <div class="layui-tab-item" id="Scene"></div>
+                                <div class="layui-tab-item layui-show" id="Scene"></div>
+                                <div class="layui-tab-item" id="characters"></div>
                                 <div class="layui-tab-item" id="Environment"></div>
                                 <div class="layui-tab-item" id="Composition"></div>
                                 <div class="layui-tab-item" id="Art_Style"></div>
@@ -200,7 +202,7 @@
                                 <div class="layui-tab-item" id="Accessories"></div>
                                 <div class="layui-tab-item" id="Character_Design"></div>
                                 <div class="layui-tab-item" id="Action"></div>
-                                <div class="layui-tab-item layui-show" id="Illustrator"></div>
+                                <div class="layui-tab-item" id="Illustrator"></div>
                                 <div class="layui-tab-item" id="r18">
                                     <p class="nr18">请打开开关</p>
                                 </div>
@@ -333,6 +335,7 @@
         loadTags('Character_Design');
         loadTags('Action');
         loadTags('Illustrator');
+        loadTags('characters');
         loadTags('r18');
     </script>
     <script>
