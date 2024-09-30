@@ -4807,6 +4807,12 @@ const Tagjson = {
         }
     },
     characters: {
+        "萝莉": {
+            "雏鹤爱": "hinatsuru_(ryuuou_no_oshigoto)",
+        },
+        "Furry": {
+            "娜娜奇": "nanachi_(made_in_abyss)",
+        },
         "原神": {
             "空": "aether_(genshin_impact)", "荧": "lumine_(genshin_impact)", "阿贝多": "albedo_(genshin_impact)", "安柏": "amber_(genshin_impact)", "荒泷一斗": "arataki_itto_(genshin_impact)", "芭芭拉": "barbara_(genshin_impact)", "北斗": "beidou_(genshin_impact)", "班尼特": "bennett_(genshin_impact)", "重云": "chongyun_(genshin_impact)", "迪卢克": "diluc_(genshin_impact)", "迪奥娜": "diona_(genshin_impact)", "优菈": "eula_(genshin_impact)", "菲谢尔": "fischl_(genshin_impact)", "甘雨": "ganyu_(genshin_impact)", "五郎": "gorou_(genshin_impact)", "胡桃": "hu_tao_(genshin_impact)", "琴": "jean_(genshin_impact)", "枫原万叶": "kaedehara_kazuha_(genshin_impact)", "凯亚": "kaeya_(genshin_impact),1boy", "神里绫华": "kamisato_ayaka", "神里绫人": "kamisato_ayato_(genshin_impact),1boy", "刻晴": "keqing_(genshin_impact)", "可莉": "klee_(genshin_impact)", "可莉（琪花星烛）": " klee (blossoming starlight) (genshin impact), ", "九条裟罗": "kujou_sara_(genshin_impact)", "丽莎": "lisa_(genshin_impact)", "莫娜": "mona_(genshin_impact)", "凝光": "ningguang_(genshin_impact)", "诺艾尔": "noelle_(genshin_impact)", "七七": "qiqi_(genshin_impact)", "雷泽": "razor_(genshin_impact),1boy", "雷电将军": "raiden_shogun", "罗莎莉亚": "rosaria_(genshin_impact)", "珊瑚宫心海": "sangonomiya_kokomi", "早柚": "sayu_(genshin_impact)", "申鹤": "shenhe_(genshin_impact)", "砂糖": "sucrose_(genshin_impact)", "戴因斯雷布": "dainsleif_(genshin_impact),1boy,", "托马": "thoma_(genshin_impact)", "温迪": "venti_(genshin_impact)", "香菱": "xiangling_(genshin_impact)", "魈": "xiao_(genshin_impact)", "行秋": "xingqiu_(genshin_impact),1boy,", "辛焱": "xinyan_(genshin_impact)", "八重神子": "yae_miko", "烟绯": "yanfei_(genshin_impact)", "宵宫": "yoimiya_(genshin_impact)", "云堇": "yun_jin_(genshin_impact)", "钟离": "zhongli_(genshin_impact)", "纳西妲": "nahida_(genshin_impact)", "米卡": "mika_(genshin_impact),1boy,yellowhair,shorthair,blueeyes", "夜兰": "yelan_(genshin_impact)", "瑶瑶": "yaoyao_(genshin_impact)", "白术": "baizhu_(genshin_impact),1boy,snake,", "久岐忍": "kuki_shinobu_(genshin_impact)", "鹿野院平藏": "shikanoin_heizou_(genshin_impact)", "绮良良": "kirara_(genshin_impact)", "提纳里": "tighnari_(genshin_impact)", "柯莱": "collei_(genshin_impact)", "多莉": "dori_(genshin_impact)", "坎蒂丝": "candace_(genshin_impact)", "赛诺": "cyno_(genshin_impact)", "妮露": "nilou_(genshin_impact)", "莱依拉": "layla_(genshin_impact)", "夏洛蒂": "charlotte_(genshin_impact)", "珐露珊": "faruzan_(genshin_impact)", "艾尔海森": "alhaitham_(genshin_impact)", "迪希雅": "dehya_(genshin_impact)", "卡维": "kaveh_(genshin_impact),1boy,", "林尼": "lyney_(genshin_impact),1boy,hat,shorthair,", "琳妮特": "lynette_(genshin_impact)", "菲米尼": "freminet_(genshin_impact)", "那维莱特": "neuvillette_(genshin_impact)", "莱欧斯利": "wriothesley_(genshin_impact)", "芙宁娜": "furina_(genshin_impact)", "大慈树王": "rukkhadevata_(genshin_impact)", "女士-罗莎琳": "signora_(genshin_impact)", "木偶-桑多涅": "sandrone_(genshin_impact)", "公子-达达利亚": "tartaglia_(genshin_impact)", "少女-哥伦比娅": "columbina_(genshin_impact)", "仆人-阿蕾奇诺": "arlecchino_(genshin_impact)", "派蒙": "paimon_(genshin_impact)", "希娜": "hina_(genshin_impact)", "丘丘人": "hilichurl_(genshin_impact)", "萤术士": "cicin_mage_(genshin_impact)", "芭芭拉（闪耀协奏）": "barbara_(summertime_sparkle)_(genshin_impact)", "琴（海风之梦）": "jean(seabreezedandelion)(genshinimpact)", "凝光(纱中幽兰)": "ningguang_(orchid's_evening_gown)_(genshin_impact)", "刻晴(霓裾翩跹)": "keqing_(opulent_splendor)_(genshin_impact)",
         },
@@ -4851,14 +4857,15 @@ function loadTags(keyName) {
     if (tagsContainer) {
         if ("r18" === keyName) tagsContainer.innerHTML += formatForR17_9(data)
         else {
-            if ("Illustrator" === keyName) for (let englishTag in data) {
+            if ("Illustrator" === keyName) for (let chineseTag in data) {
                 {
-                    let htmlStr = "<p>" + englishTag + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
-                        chineseTag = data[englishTag];
-                    Object.entries(chineseTag).forEach(([_0x48784a, _0x58f74e], _0x175528) => {
-                        let _0x579066 = "but" + keyName + englishTag + _0x175528,
-                            _0x2303fb = _0x58f74e.replace("artist:", "");
-                        htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("./Artist_image/" + (_0x48784a + "_" + _0x2303fb + ".webp")) + "\" alt=\"" + _0x58f74e + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + _0x579066 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x58f74e + "</span>\n                                <span class=\"chinese\">" + _0x48784a + "</span>\n                            </div>\n                        </div>\n                    </div>";
+                    let htmlStr = "<p>" + chineseTag + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
+                        englishTag = data[chineseTag];
+                    Object.entries(englishTag).forEach(([key, value], index) => {
+                        let htmlStr_2 = "but" + keyName + chineseTag + index,
+                            englishTagReplaced = value.replace("artist:", "");
+                        if (englishTagReplaced.includes(",")) englishTagReplaced = "画风";
+                        htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("./Artist_image/" + (key + "_" + englishTagReplaced + ".webp")) + "\" alt=\"" + value + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + htmlStr_2 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + value + "</span>\n                                <span class=\"chinese\">" + key + "</span>\n                            </div>\n                        </div>\n                    </div>";
                     });
                     htmlStr += "</form><hr>";
                     tagsContainer.innerHTML += htmlStr;
@@ -4867,8 +4874,8 @@ function loadTags(keyName) {
                 {
                     let classFormName = "<p>" + tagKey + "</p><form class=\"layui-form\">",
                         tag = data[tagKey];
-                    Object.entries(tag).forEach(([_0x3de2a2, _0x3db2b9], _0x1b3be2) => {
-                        classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + tagKey + _0x1b3be2) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + _0x3db2b9 + "</span>\n                                <span class=\"chinese\">" + _0x3de2a2 + "</span>\n                            </div>\n                        </div>";
+                    Object.entries(tag).forEach(([key, value], index) => {
+                        classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + tagKey + index) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + value + "</span>\n                                <span class=\"chinese\">" + key + "</span>\n                            </div>\n                        </div>";
                     });
                     classFormName += "</form><hr>";
                     tagsContainer.innerHTML += classFormName;
