@@ -68,8 +68,12 @@
                             <div class="layui-col-md12">
                                 <div class="layui-card">
                                     <div id="elements-container"
-                                        style="min-height: 175px;height: auto;line-height: 20px;padding: 6px 10px;resize: vertical;">
+                                        style="position: relative; min-height: 175px; height: auto; line-height: 20px; padding: 6px 10px; resize: vertical;">
                                         <div id="addtag"></div>
+                                        <div
+                                            style="position: absolute; top: 0; left: 10; width: 100%; height: 100%; opacity: 0.5; pointer-events: none;">
+                                            选项卡（可拖动）
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +82,7 @@
                     <div class="layui-col-md4">
                         <div class="layui-col-md12">
                             <div class="layui-card">
-                                <div class="layui-card-header">⭐output</div>
+                                <div class="layui-card-header">⭐Tags:</div>
                                 <div class="layui-card-body">
                                     <div class="tagarea">
                                         <div style="display: flex;flex-flow: row nowrap;">
@@ -172,6 +176,7 @@
                     <div class="layui-col-md8">
                         <div class="layui-tab layui-card" overflow="">
                             <ul class="layui-tab-title">
+                                <li>质量&amp;控制</li>
                                 <li class="layui-this">画面&amp;光影</li>
                                 <li>游戏&amp;角色</li>
                                 <li class="">环境&amp;生物</li>
@@ -185,10 +190,11 @@
                                 <li>配饰&amp;物品</li>
                                 <li>人设&amp;物种</li>
                                 <li>动作&amp;姿态</li>
-                                <li class="">画师</li>
+                                <li class="">画师&amp;画风</li>
                                 <li>R18</li>
                             </ul>
                             <div class="layui-tab-content" style="height: 500px;overflow-y: scroll;">
+                                <div class="layui-tab-item" id="Quality"></div>
                                 <div class="layui-tab-item layui-show" id="Scene"></div>
                                 <div class="layui-tab-item" id="characters"></div>
                                 <div class="layui-tab-item" id="Environment"></div>
@@ -284,7 +290,6 @@
                                             <div class="underLogo">
                                                 <h2>NAI3指南</h2>
                                                 <p>宝宝巴士也能学会的nai3指南</p>
-                                                <p>如果手机浏览器出现卡死，请换用edge浏览器</p>
                                                 </ul>
                                                 <button class="learnMore"
                                                     onclick="openInNewTab(&#39;https://nai3botinstruction.pages.dev&#39;);">了解更多</button>
@@ -293,6 +298,7 @@
                                             <div class="underLogo">
                                                 <h2>关于本网站</h2>
                                                 <p>本网站是一个提供词条查找功能的服务站点；</p>
+                                                <p>若手机浏览器出现卡死，请换用edge浏览器；</p>
                                                 <p>更多细节请查阅<a target="_blank"
                                                         href="https://nai3botinstruction.pages.dev/">宝宝巴士也能学会的nai3指南</a>；
                                                 </p>
@@ -323,6 +329,7 @@
     <script>
         // 加载特定的类别标签
         loadTags('Environment');
+        loadTags('Quality');
         loadTags('Scene');
         loadTags('Composition');
         loadTags('Art_Style');
