@@ -232,8 +232,7 @@
                                                 <div class="layui-form-item layui-form-text"
                                                     style="flex: 100 100 0%;display: inline-block;vertical-align: middle;">
                                                     <div class="layui-input-block" style="margin-left:0px;"><textarea
-                                                            id="tagarea3" class="layui-textarea"
-                                                            placeholder="请在此输入您的tag串,tag将按照逗号划分"></textarea>
+                                                            id="tagarea3" class="layui-textarea" placeholder="自动按逗号分割输入的tags"></textarea>
                                                     </div>
                                                 </div>
                                                 <div align="center"
@@ -260,7 +259,7 @@
                                                     style="flex: 100 100 0%;vertical-align: middle;">
                                                     <div class="layui-input-block" style="margin-left:0px;"><textarea
                                                             id="tagselect" style="height: 35px;" class="layui-textarea"
-                                                            placeholder="请在此输入您要搜索的内容，中英文皆可"></textarea></div>
+                                                            placeholder="请输入您要搜索的内容..."></textarea></div>
                                                 </div>
                                                 <div class="control-container" id="Tag_Sarch_div">
                                                     <div class="layui-form"><button
@@ -376,6 +375,25 @@
                     randomString: randomString
                 };
             });
+
+            // 不翻译
+            const translatedTexts_01 = " "
+            var tagTexts = tagObjects.map(tagObj => tagObj.tag);
+            tagObjects.forEach((tagObj, index) => {
+                var div = document.createElement('div');
+                div.className = 'tagbutton';
+                div.id = 'butuserTag_' + tagObj.randomString;
+
+                div.innerHTML = '<div class="minus" style="display: none;">-</div>' +
+                    '<div class="plus" style="display: none;">+</div>' +
+                    '<div class="buttext">' +
+                    '<span class="english">' + tagObj.tag + '</span>' +
+                    '<span class="chinese">' + translatedTexts_01 + '</span>' +
+                    '</div>';
+
+                insertionPoint.appendChild(div);
+            })
+            return;
 
             // 提取所有标签文本进行批量翻译
             var tagTexts = tagObjects.map(tagObj => tagObj.tag);
