@@ -2766,12 +2766,20 @@ const Tagjson = {
             "胸部走光": "breast slip",
             "袖子往上拉起": "sleeves pushed up",
             "解开纽扣的衬衫": "unbuttoned shirt",
-            "解开胸罩": "open bra"
+            "解开胸罩": "open bra",
+            "私服": "casual",
+            "连衫裤": "jumpsuit",
+            "长袍": "robe"
         },
         "下装": {
             "不穿下装": "bottomless",
             "不穿内裤": "no panties",
             "脱下裙子": "dress removed"
+        },
+        "幼儿": {
+            "奶嘴": "pacifier in the mouth",
+            "幼儿园服装": "kindergarten_uniform",
+            "校园帽": "school_hat",
         },
         "中古系": {
             "全装甲": "full armor",
@@ -2804,9 +2812,7 @@ const Tagjson = {
             "猫耳兜帽": "cat hood",
             "虎鲸兜帽": "orca hood",
             "鸟兜帽": "bird hood",
-            "鼠耳兜帽": "mouse hood"
-        },
-        "其他": {
+            "鼠耳兜帽": "mouse hood",
             "三重冕": "tiara",
             "东金帽子": "tokin hat",
             "南瓜帽": "pumpkin hat",
@@ -2823,11 +2829,6 @@ const Tagjson = {
             "贝雷帽": "beret",
             "软呢帽": "fedora",
             "迷你礼帽": "mini top hat"
-        },
-        "其他种类": {
-            "私服": "casual",
-            "连衫裤": "jumpsuit",
-            "长袍": "robe"
         },
         "内衣": {
             "乳头创可贴": "bandaids on nipples",
@@ -2923,9 +2924,6 @@ const Tagjson = {
             "连帽外套": "hooded coat",
             "风衣": "windbreaker"
         },
-        "头部": {
-            "兜帽戴在头上": "hood up"
-        },
         "夹克": {
             "夹克": "color?:jacket",
             "旅行夹克": "safari jacket",
@@ -2990,7 +2988,8 @@ const Tagjson = {
             "彩色披风": "multicolored cape",
             "披风": "cape",
             "漂起的披风": "floating cape",
-            "裸体披风": "naked cape"
+            "裸体披风": "naked cape",
+            "兜帽戴在头上": "hood up",
         },
         "整体": {
             "全裸": "completely nude",
@@ -4451,7 +4450,7 @@ const Tagjson = {
             "握拳": "fist",
             "攥拳": "clenched hands",
             "比中指": "middle finger",
-            "爪子": "paw pose",
+            "猫爪姿势": "cat paw pose",
             "爽手势": "shocker",
             "狐狸手势": "fox shadow puppet",
             "猫爪": "cat pose",
