@@ -4666,6 +4666,15 @@ const Tagjson = {
     },
     Illustrator: {
         "画风": {
+            // "雪糕4件套": "artist: ciloranko, [Artist: Sho_(sho_LWLW)], [Artist: baku-p], [Artist: Tsubasa_tsubasa]",
+            // "可爱4件套": "artist:ciloranko, [artist:sho_(sho_lwlw)], [[artist:tianliang_duohe_fangdongye]], [[[[[[artist:kani_biimu]]]]]]",
+            // "可爱6件套": "artist:ciloranko, [artist:tianliang duohe fangdongye], [artist:sho_(sho_lwlw)], [artist:baku-p], [artist:aki99]",
+            // "萝莉5件套": "artist:ciloranko, [artist:tianliang duohe fangdongye], [artist:sho_(sho_lwlw)], [artist:baku-p], [artist:tsubasa_tsubasa]",
+            // "萝莉7件套": "artist: ciloranko, [artist: tianliang duohe fangdongye], [artist: sho_(sho_lwlw)], [artist: baku-p], [artist:tsubasa_tsubasa], [[artist:as109]], [[artist:rhasta]]",
+            // "水彩画风": "{hokori sakuni}, {ciloranko}, {ke-ta}, {houkisei}, {kedama milk}",
+            // "动画画风": "artist:pu hua, artist:shiratamaco, artist:tianliang duohe fangdongye",
+            // "海报画风": "artist:ciloranko, {artist:menthako}, {artist:tianliang duohe fangdongye}, [artist:sho (sho lwlw)], [artist:baku-p ], [[[artist:tsubasa tsubasa]]], artist: kemo camotli",
+            // "鲜艳色彩画风": "[artist:ningen_mame], {{{ciloranko}}}, [artist:sho_(sho_lwlw)], [[artist:rhasta]], [artist:wlop], [artist:ke-ta]",
         },
         "画师": {
             "Anmi": "artist:anmi",
@@ -4813,10 +4822,10 @@ const Tagjson = {
             "茵蒂克斯（魔法禁书目录）": "index (toaru_majutsu_no_index)",
             "御坂妹妹（魔法禁书目录）": "misaka_imouto",
             "月咏小萌（魔法禁书目录）": "tsukuyomi_komoe",
-            "雏鹤爱（龙王的工作）": "Hinazuru_Ai_(ryuuou_no_oshigoto)",
-            "夜叉神天衣（龙王的工作）": "Yashajin_Ai_(ryuuou_no_oshigoto)",
-            "夏绿蒂·伊索亚尔（龙王的工作）": "Charlotte_Izoard_(ryuuou_no_oshigoto)",
-            "香风智乃（请问您今天要来点兔子吗）": "chino_kafuu (gochuumon_wa_usagi_desu_ka?)",
+            "雏鹤爱（龙王的工作）": "hinatsuru_ai (ryuuou_no_oshigoto!)",
+            "夜叉神天衣（龙王的工作）": "yashajin_ai (ryuuou_no_oshigoto!)",
+            "夏绿蒂·伊索亚尔（龙王的工作）": "Charlotte_Izoard (ryuuou_no_oshigoto!)",
+            "香风智乃（请问您今天要来点兔子吗）": "kafuu_chino (gochuumon_wa_usagi_desu_ka?)",
             "条河麻耶（请问您今天要来点兔子吗）": "jouga_maya (gochuumon_wa_usagi_desu_ka?)",
             "奈津惠（请问您今天要来点兔子吗）": "Natsu_Megumi (gochuumon_wa_usagi_desu_ka?)",
             "保登心爱（请问您今天要来点兔子吗）": "hoto_cocoa (gochuumon_wa_usagi_desu_ka?)",
@@ -4834,7 +4843,7 @@ const Tagjson = {
             "穗月椛（别当欧尼酱了）": "hozuki_momiji (onii-chan_wa_oshimai!)",
             "中野梓": "nakano_Azusa (k-on!)",
             "平泽唯": "hirasawa_yui (k-on!)",
-            "阿尼亚·福杰（间谍过家家）": "Anya_Forger_(SPY×FAMILY)",
+            "阿尼亚·福杰（间谍过家家）": "anya_(spy_x_family)",
             "康娜卡姆依（小林家的龙女仆）": "kanna_kamui_(maidragon)",
             "藍原延珠（漆黑的子弹）": "Aihara_Enju_(Black_Bullet)",
             "碧翠丝": "beatrice_(re:zero)",
@@ -5022,30 +5031,40 @@ const Tagjson = {
 
 
 function loadTags(keyName) {
-    const data = Tagjson[keyName]
+    const category_data = Tagjson[keyName]
     var tagsContainer = document.getElementById(keyName);
     if (tagsContainer) {
-        if ("r18" === keyName) tagsContainer.innerHTML += formatForR17_9(data)
+        if ("r18" === keyName) tagsContainer.innerHTML += formatForR17_9(category_data)
         else {
-            if ("Illustrator" === keyName) for (let chineseTag in data) {
-                {
-                    let htmlStr = "<p>" + chineseTag + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
-                        englishTag = data[chineseTag];
-                    Object.entries(englishTag).forEach(([key, value], index) => {
-                        let htmlStr_2 = "but" + keyName + chineseTag + index,
-                            englishTagReplaced = value.replace("artist:", "");
-                        if (englishTagReplaced.includes(",")) englishTagReplaced = "画风";
-                        htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: 10px;\">\n                        <img src=\"" + ("./Artist_image/" + (key + "_" + englishTagReplaced + ".webp")) + "\" alt=\"" + value + "\" class=\"illustrator-image\"> <!-- 添加图像 -->\n                        <div class=\"tagbutton\" id=\"" + htmlStr_2 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + value + "</span>\n                                <span class=\"chinese\">" + key + "</span>\n                            </div>\n                        </div>\n                    </div>";
+            if ("Illustrator" === keyName) {
+                for (let subclass_key in category_data) {
+                    let htmlStr = "<p>" + subclass_key + "</p><form class=\"layui-form\" style=\"display: flex; flex-wrap: wrap;\">",
+                        subclass_data = category_data[subclass_key];
+                    Object.entries(subclass_data).forEach(([key, value], index) => {
+                        let htmlStr_2 = "but" + keyName + subclass_key + index,
+                            img_name_second_half = value.replace("artist:", "");
+                        if (img_name_second_half.includes(",")) {
+                            img_name_second_half = "画风";
+                        }
+                        let margin_bottom_px = 10;
+                        // 动态调整高度
+                        // if (value.length + key.length * 2 < 30) margin_bottom_px = 10;
+                        // else if (value.length + key.length * 2 < 70) margin_bottom_px = 30;
+                        // else if (value.length + key.length * 2 < 110) margin_bottom_px = 60;
+                        // else margin_bottom_px = 90;
+                        // 写入 html
+                        htmlStr += "\n                    <div style=\"display: flex; flex-direction: column; align-items: center; margin-right: 10px; margin-bottom: " + margin_bottom_px + "px;\">\n                        <img src=\"" + ("./Artist_image/" + (key + "_" + img_name_second_half + ".webp")) + "\" alt=\"" + value + "\" class=\"illustrator-image\">\n                        <div class=\"tagbutton\" id=\"" + htmlStr_2 + "\">\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + value + "</span>\n                                <span class=\"chinese\">" + key + "</span>\n                            </div>\n                        </div>\n                    </div>";
                     });
                     htmlStr += "</form><hr>";
                     tagsContainer.innerHTML += htmlStr;
                 }
-            } else for (let tagKey in data) {
-                {
-                    let classFormName = "<p>" + tagKey + "</p><form class=\"layui-form\">",
-                        tag = data[tagKey];
-                    Object.entries(tag).forEach(([key, value], index) => {
-                        classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + tagKey + index) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + value + "</span>\n                                <span class=\"chinese\">" + key + "</span>\n                            </div>\n                        </div>";
+            }
+            else {
+                for (let subclass_key in category_data) {
+                    let classFormName = "<p>" + subclass_key + "</p><form class=\"layui-form\">",
+                        subclass_data = category_data[subclass_key];
+                    Object.entries(subclass_data).forEach(([key, value], index) => {
+                        classFormName += "\n                        <div class=\"tagbutton\" id=\"" + ("but" + keyName + subclass_key + index) + "\">\n                            <div class=\"minus\" style=\"display: none;\">-</div>\n                            <div class=\"plus\" style=\"display: none;\">+</div>\n                            <div class=\"buttext\">\n                                <span class=\"english\">" + value + "</span>\n                                <span class=\"chinese\">" + key + "</span>\n                            </div>\n                        </div>";
                     });
                     classFormName += "</form><hr>";
                     tagsContainer.innerHTML += classFormName;
@@ -5054,6 +5073,11 @@ function loadTags(keyName) {
         }
     } else console.error("Container for category " + keyName + " not found");
 }
+/**
+ * @description: 对r17的词条做隐藏处理
+ * @param {*} tagsData
+ * @return {*}
+ */
 function formatForR17_9(tagsData) {
     let htmlStr = "<form class=\"layui-form r18\">";
     for (let key in tagsData) {
