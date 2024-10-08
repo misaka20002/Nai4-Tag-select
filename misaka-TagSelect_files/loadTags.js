@@ -4964,6 +4964,9 @@ const Tagjson = {
             "清浦刹那（日在校园）": "kiyoura_setsuna (school_days)",
             "桂心（日在校园）": "katsura_kokoro (school_days)",
             "加藤可怜（日在校园）": "kuroda_hikari (school_days)",
+            "丸井三叶（超元气三姐妹）": "marui_mitsuba (mitsudomoe_(manga))",
+            "丸井双叶（超元气三姐妹）": "marui_futaba (mitsudomoe_(manga))",
+            "丸井一叶（超元气三姐妹）": "marui_hitoha (mitsudomoe_(manga))",
         },
         "Gal·萝莉": {
             "八六（爱上火车）": "hachiroku_(maitetsu)",
