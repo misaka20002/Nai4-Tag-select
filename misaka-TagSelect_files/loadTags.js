@@ -5046,7 +5046,7 @@ function loadTags(keyName) {
                     Object.entries(subclass_data).forEach(([key, value], index) => {
                         let htmlStr_2 = "but" + keyName + subclass_key + index,
                             img_name_second_half = value.replace("artist:", "");
-                        if (img_name_second_half.includes("")) {
+                        if (img_name_second_half.includes(",")) {
                             img_name_second_half = "画风";
                         }
                         let margin_bottom_px = 10;
